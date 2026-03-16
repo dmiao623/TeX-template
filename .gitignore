@@ -10,6 +10,8 @@ __pycache__/
 *.synctex.gz
 *.out
 *.pdf
+*.minted
+_minted
 
 # BibTeX artifacts
 *.bbl

@@ -10,6 +10,7 @@
 \newtoggle{@@uselmodern}        \toggletrue{@@uselmodern}
 \newtoggle{@@psetcmds}          \toggletrue{@@psetcmds}
 \newtoggle{@@includefigures}    \togglefalse{@@includefigures}
+\newtoggle{@@includecode}       \togglefalse{@@includecode}
 \newtoggle{@@includebiblio}     \togglefalse{@@includebiblio}
 \newtoggle{@@includetikz}       \togglefalse{@@includetikz}
 \newtoggle{@@includeurl}        \togglefalse{@@includeurl}
@@ -41,6 +42,19 @@
   \caption{xxxxx}
   \label{px:fig:xxxxx}
 \end{figure}
+
+% code block
+% use `style=bg' for no code highlight
+\begin{minted}[opts, ...]{lang}
+def main():
+  print("hello world!")
+\end{minted}
+
+% code block (imported from file)
+\inputminted[firstline=xx, lastline=xx]{lang}{code_file.exp}
+
+% inline code block
+\mint{lang}|print("hello world!")|
 
 % bibliography should be stored in ./references.bib
 % suggested to use bibtex entries from Google scholar w/o changing refname

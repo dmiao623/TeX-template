@@ -120,6 +120,27 @@
 
 }
 
+\iftoggle{@@includecode}{
+  \usepackage{minted}
+  \usepackage{xcolor}
+
+  \definecolor{LightGray}{gray}{0.9}
+  \setminted{
+    baselinestretch=1.2,
+    bgcolor=LightGray,
+    fontsize=\footnotesize,
+    xleftmargin=14pt,
+    baselinestretch=0.88,
+    numbersep=4pt,
+    linenos,
+    mathescape,
+    style=tango
+  }
+  \renewcommand{\theFancyVerbLine}{\ttfamily\scriptsize\arabic{FancyVerbLine}}
+}{
+
+}
+
 \iftoggle{@@includebiblio}{
   \usepackage[
     backend=biber,
