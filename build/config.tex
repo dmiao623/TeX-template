@@ -12,6 +12,7 @@
 \newtoggle{@@includefigures}    \togglefalse{@@includefigures}
 \newtoggle{@@includebiblio}     \togglefalse{@@includebiblio}
 \newtoggle{@@includetikz}       \togglefalse{@@includetikz}
+\newtoggle{@@includeurl}        \togglefalse{@@includeurl}
 
 \newtoggle{@@parspace}          \toggletrue{@@parspace}
 \newtoggle{@@parindent}         \togglefalse{@@parindent}
@@ -43,5 +44,9 @@
 
 % bibliography should be stored in ./references.bib
 % suggested to use bibtex entries from Google scholar w/o changing refname
+
+\url{https://example.com}
+\href{https://example.com}{Visit Example}
+\href{https://example.com}{\textcolor{blue}{\uline{Visit Example}}}
 
 \fi

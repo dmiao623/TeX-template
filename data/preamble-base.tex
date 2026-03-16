@@ -30,16 +30,16 @@
 % │ Formatting Settings                             │
 % └─────────────────────────────────────────────────┘
 
-% theorem environment declarations
-\newtheorem{theorem}{Theorem}[section]
-\newtheorem{lemma}[theorem]{Lemma}
-\newtheorem{corollary}[theorem]{Corollary}
-\newtheorem{proposition}[theorem]{Proposition}
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}
-\newtheorem{example}{Example}
-\theoremstyle{remark}
-\newtheorem{remark}{Remark}
+% theorem environment declarations (unsued)
+% \newtheorem{theorem}{Theorem}[section]
+% \newtheorem{lemma}[theorem]{Lemma}
+% \newtheorem{corollary}[theorem]{Corollary}
+% \newtheorem{proposition}[theorem]{Proposition}
+% \theoremstyle{definition}
+% \newtheorem{definition}{Definition}
+% \newtheorem{example}{Example}
+% \theoremstyle{remark}
+% \newtheorem{remark}{Remark}
 
 % removes spacing between paragraphs
 \setlist{partopsep=-\parskip,parsep=0pt} 
@@ -138,6 +138,11 @@
 
 }
 
+\iftoggle{@@includeurl}{
+  \usepackage{xcolor}
+  \usepackage{hyperref}
+  \usepackage[normalem]{ulem}
+}
 
 \iftoggle{@@parspace}{
   \setlength{\parskip}{\baselineskip}
