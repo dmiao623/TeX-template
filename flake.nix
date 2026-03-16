@@ -1,5 +1,5 @@
 {
-  description = "03-232 devenv";
+  description = "TeX-Template flake";
   inputs.nixpkgs.url = "github:NixOS/nixpkgs";
   outputs = { self, nixpkgs }: 
   let
