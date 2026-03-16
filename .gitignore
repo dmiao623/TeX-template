@@ -1,0 +1,11 @@
+# Python artifacts
+__pycache__/
+.venv/
+
+# TeX artifacts
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.synctex.gz
+*.out
