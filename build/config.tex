@@ -10,17 +10,12 @@
 \newtoggle{@@uselmodern}        \toggletrue{@@uselmodern}
 \newtoggle{@@psetcmds}          \toggletrue{@@psetcmds}
 \newtoggle{@@includefigures}    \togglefalse{@@includefigures}
+\newtoggle{@@includebiblio}     \togglefalse{@@includebiblio}
+\newtoggle{@@includetikz}       \togglefalse{@@includetikz}
 
 \makeatother
 
 \iffalse
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.40\textwidth]{px_xxxxx}
-  \caption{xxxxx}
-  \label{px:fig:xxxxx}
-\end{figure}
 
 \begin{table}[h]
   \centering
@@ -34,5 +29,16 @@
   \caption{xxxxx}
   \label{px:tab:xxxxx}
 \end{table}
+
+% figures should be stored in ./figures/
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.40\textwidth]{px_xxxxx}
+  \caption{xxxxx}
+  \label{px:fig:xxxxx}
+\end{figure}
+
+% bibliography should be stored in ./references.bib
+% suggested to use bibtex entries from Google scholar w/o changing refname
 
 \fi

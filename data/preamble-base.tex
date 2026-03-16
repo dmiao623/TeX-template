@@ -123,6 +123,24 @@
 
 }
 
+\iftoggle{@@includebiblio}{
+  \usepackage[
+    backend=biber,
+    sorting=none,
+    sortcites=true,
+  ]{biblatex}
+  \addbibresource{references.bib}
+}{
+
+}
+
+\iftoggle{@@includetikz}{
+  \usepackage{tikz}
+  \usetikzlibrary{positioning,arrows.meta}
+}{
+
+}
+
 \makeatother
 
 % ┌─────────────────────────────────────────────────┐
