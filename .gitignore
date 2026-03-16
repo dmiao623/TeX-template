@@ -10,3 +10,9 @@ __pycache__/
 *.synctex.gz
 *.out
 *.pdf
+
+# BibTeX artifacts
+*.bbl
+*.bcf
+*.blg
+*.run.xml
