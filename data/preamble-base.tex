@@ -1,0 +1,130 @@
+% ┌─────────────────────────────────────────────────┐
+% │ Packages                                        │
+% └─────────────────────────────────────────────────┘
+
+% mathematical formatting (\align, \cases, ...)
+\usepackage{amsmath}
+
+% mathematical fonts (\mathbb, \mathfrak, ...)
+\usepackage{amsfonts}
+
+% extension to amsfonts (\nexists, \square)
+\usepackage{amssymb}
+
+% theorem environments (\newtheorem)
+\usepackage{amsthm}
+
+% custom enumeration and itemize options ((i), (a), \setlist, ...)
+\usepackage{enumitem}
+
+% config management (toggles, patch commands, etc.)
+\usepackage{etoolbox}
+
+% augmented table formatting
+\usepackage{multirow}
+
+% customize section formmating
+\usepackage{titlesec}
+
+% ┌─────────────────────────────────────────────────┐
+% │ Formatting Settings                             │
+% └─────────────────────────────────────────────────┘
+
+% theorem environment declarations
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% removes spacing between paragraphs
+\setlist{partopsep=-\parskip,parsep=0pt} 
+
+% increase text width
+\setlength{\textwidth}{460pt}
+
+% move document upwards
+\setlength{\voffset}{-1cm}
+
+% text on page before starting a new page
+\setlength{\textheight}{21cm}
+
+% removes indentation before paragraphs
+\setlength{\parindent}{0pt}
+
+% increased context in error log
+\setcounter{errorcontextlines}{1000}
+
+% removes horizontal page shift
+\setlength{\oddsidemargin}{0pt}
+
+% ┌─────────────────────────────────────────────────┐
+% │ Config                                          │
+% └─────────────────────────────────────────────────┘
+
+\input{config}
+
+\makeatletter
+
+% redefine \maketitle command
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge
+      Homework \@@hwnum\ Solutions
+    }
+
+    \vspace{1.5em}
+    \begin{tabular}{rl}
+      Author: & \@@author\ (\texttt{\@@andrewid}) \\
+      Course: & \@@course\ \@@section \\
+      Due by: & \@@duedate
+    \end{tabular}
+    \vspace{1.5em}
+  \end{center}}
+
+\iftoggle{@@uselmodern}{
+  % imports lmodern font
+  \usepackage{lmodern}
+  \renewcommand{\rmdefault}{lmss}
+}{
+
+}
+
+\iftoggle{@@psetcmds}{
+  % reformat section headers
+  \titleformat{\section}
+    {\normalfont\large\bfseries}
+    {}
+    {0pt}
+    {}
+
+  \NewDocumentCommand{\ZS}{o m}{
+    \IfValueTF{#1}
+      { 
+        \setcounter{section}{#1}
+        \addtocounter{section}{-1}
+      }
+      {
+      }
+    \section{#2}
+  }
+}{
+
+}
+
+\iftoggle{@@includefigures}{
+  \usepackage{graphicx}
+  \graphicspath{ {./figures/} }
+}{
+
+}
+
+\makeatother
+
+% ┌─────────────────────────────────────────────────┐
+% │ Macros                                          │
+% └─────────────────────────────────────────────────┘

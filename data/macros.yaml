@@ -1,0 +1,98 @@
+modifiers:
+  - command: '\mathbb'
+    prefix: bb
+    domain: "A-Z"
+
+  - command: '\mathscr'
+    prefix: scr
+    domain: "A-Z"
+
+  - command: '\mathcal'
+    prefix: cal
+    domain: "A-Z"
+
+  - command: '\vec'
+    prefix: vv
+    domain: "a-zA-Z"
+
+  - command: '\mathbf'
+    prefix: vb
+    domain: "a-zA-Z"
+
+  - command: '\hat'
+    prefix: hh
+    domain: "a-zA-Z"
+
+commands:
+  groups:
+    - '\f': '\frac{#1}{#2}'
+    - '\bpa': '\left( #1 \right)'
+    - '\bbb': '\left[ #1 \right]'
+    - '\bbr': '\left\{ #1 \right\}'
+    - '\bab': '\left\lvert #1 \right\rvert'
+    - '\bfl': '\left\lfloor #1 \right\rfloor'
+    - '\bcl': '\left\lceil #1 \right\rceil'
+    - '\ban': '\left\langle #1 \right\rangle'
+    - '\bnm': '\lVert #1 \rVert'
+
+  environments:
+    - '\BA': '\begin{align*} #1 \end{align*}'
+    - '\BAC': '\begin{align} #1 \end{align}'
+    - '\BC': '\begin{cases} #1 \end{cases}'
+    - '\BE': '\begin{equation*} #1 \end{equation*}'
+    - '\BEC': '\begin{equation} #1 \end{equation}'
+    - '\BI': '\begin{itemize}[nosep] #1 \end{itemize}'
+    - '\BR': '\begin{enumerate}[label=(\roman*)] #1 \end{enumerate}'
+    - '\BMC': '\begin{multline} #1 \end{multline}'
+    - '\BN': '\begin{enumerate}[label=(\arabic*)] #1 \end{enumerate}'
+    - '\BSC': '\begin{split} #1 \end{split}'
+    - '\BV': '\begin{enumerate}[label=(\alph*)] #1 \end{enumerate}'
+
+  matrices:
+    - '\MA': '\begin{matrix} #1 \end{matrix}'
+    - '\MP': '\begin{pmatrix} #1 \end{pmatrix}'
+    - '\MB': '\begin{bmatrix} #1 \end{bmatrix}'
+    - '\MV': '\begin{vmatrix} #1 \end{vmatrix}'
+    - '\MVV': '\begin{Vmatrix} #1 \end{Vmatrix}'
+
+  values:
+    - '\eset': '\varnothing'
+    - '\vZ': '\vec{0}'
+
+  logic:
+    - '\fa': '\forall'
+    - '\ex': '\exists'
+    - '\imp': '\Rightarrow'
+    - '\bimp': '\Leftrightarrow'
+
+  algebra:
+    - 'spn': 'span'
+    - 'rank': 'rank'
+    - 'gker': 'gker'
+    - 'proj': 'proj'
+    - 'img': 'img'
+
+  number theory:
+    - 'lcm': 'lcm'
+    - 'argmin*': 'argmin'
+    - 'argmax*': 'argmax'
+
+  calculus:
+    - '\d': '\;\mathrm{d}'
+    - '\p': '\partial'
+    - '\ddx': '\f{\mathrm{d}}{\mathrm{d} #1}'
+    - '\dydx': '\f{\mathrm{d} #1}{\mathrm{d} #2}'
+    - '\ppx': '\f{\partial}{\partial #1}'
+    - '\pypx': '\f{\partial #1}{\partial #2}'
+    - '\vol': '\mathrm{vol}'
+
+  probability:
+    - '\P': '\mathbf{P}\left\{ #1 \right\}'
+    - '\E': '\mathbf{E}\left[ #1 \right]'
+    - '\Pc': '\mathbf{P}\left\{ #1 \mid #2 \right\}'
+    - '\Eb': '\newcommand{\Eb}{\mathbf{E}}'
+    - '\Ec': '\mathbf{E}\left[ #1 \mid #2 \right]'
+    - '\Ep': '\mathbf{E}_{#1}\left[ #2\right]'
+    - '\Epc': '\newcommand{\Epc}[3]{\mathbf{E}_{#1}\left[ #2 \mid #3 \right]}'
+    - 'Var': 'Var'
+    - 'Cov': 'Cov'

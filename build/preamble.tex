@@ -1,0 +1,449 @@
+% ┌─────────────────────────────────────────────────┐
+% │ Packages                                        │
+% └─────────────────────────────────────────────────┘
+
+% mathematical formatting (\align, \cases, ...)
+\usepackage{amsmath}
+
+% mathematical fonts (\mathbb, \mathfrak, ...)
+\usepackage{amsfonts}
+
+% extension to amsfonts (\nexists, \square)
+\usepackage{amssymb}
+
+% theorem environments (\newtheorem)
+\usepackage{amsthm}
+
+% custom enumeration and itemize options ((i), (a), \setlist, ...)
+\usepackage{enumitem}
+
+% config management (toggles, patch commands, etc.)
+\usepackage{etoolbox}
+
+% augmented table formatting
+\usepackage{multirow}
+
+% customize section formmating
+\usepackage{titlesec}
+
+% ┌─────────────────────────────────────────────────┐
+% │ Formatting Settings                             │
+% └─────────────────────────────────────────────────┘
+
+% theorem environment declarations
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+% removes spacing between paragraphs
+\setlist{partopsep=-\parskip,parsep=0pt}
+
+% increase text width
+\setlength{\textwidth}{460pt}
+
+% move document upwards
+\setlength{\voffset}{-1cm}
+
+% text on page before starting a new page
+\setlength{\textheight}{21cm}
+
+% removes indentation before paragraphs
+\setlength{\parindent}{0pt}
+
+% increased context in error log
+\setcounter{errorcontextlines}{1000}
+
+% removes horizontal page shift
+\setlength{\oddsidemargin}{0pt}
+
+% ┌─────────────────────────────────────────────────┐
+% │ Config                                          │
+% └─────────────────────────────────────────────────┘
+
+\input{config}
+
+\makeatletter
+
+% redefine \maketitle command
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\huge
+      Homework \@@hwnum\ Solutions
+    }
+
+    \vspace{1.5em}
+    \begin{tabular}{rl}
+      Author: & \@@author\ (\texttt{\@@andrewid}) \\
+      Course: & \@@course\ \@@section \\
+      Due by: & \@@duedate
+    \end{tabular}
+    \vspace{1.5em}
+  \end{center}}
+
+\iftoggle{@@uselmodern}{
+  % imports lmodern font
+  \usepackage{lmodern}
+  \renewcommand{\rmdefault}{lmss}
+}{
+
+}
+
+\iftoggle{@@psetcmds}{
+  % reformat section headers
+  \titleformat{\section}
+    {\normalfont\large\bfseries}
+    {}
+    {0pt}
+    {}
+
+  \NewDocumentCommand{\ZS}{o m}{
+    \IfValueTF{#1}
+      {
+        \setcounter{section}{#1}
+        \addtocounter{section}{-1}
+      }
+      {
+      }
+    \section{#2}
+  }
+}{
+
+}
+
+\iftoggle{@@includefigures}{
+  \usepackage{graphicx}
+  \graphicspath{ {./figures/} }
+}{
+
+}
+
+\makeatother
+
+% ┌─────────────────────────────────────────────────┐
+% │ Macros                                          │
+% └─────────────────────────────────────────────────┘
+
+% \mathbb
+\newcommand{\bbA}{\mathbb{A}}
+\newcommand{\bbB}{\mathbb{B}}
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbD}{\mathbb{D}}
+\newcommand{\bbE}{\mathbb{E}}
+\newcommand{\bbF}{\mathbb{F}}
+\newcommand{\bbG}{\mathbb{G}}
+\newcommand{\bbH}{\mathbb{H}}
+\newcommand{\bbI}{\mathbb{I}}
+\newcommand{\bbJ}{\mathbb{J}}
+\newcommand{\bbK}{\mathbb{K}}
+\newcommand{\bbL}{\mathbb{L}}
+\newcommand{\bbM}{\mathbb{M}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbO}{\mathbb{O}}
+\newcommand{\bbP}{\mathbb{P}}
+\newcommand{\bbQ}{\mathbb{Q}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbT}{\mathbb{T}}
+\newcommand{\bbU}{\mathbb{U}}
+\newcommand{\bbV}{\mathbb{V}}
+\newcommand{\bbW}{\mathbb{W}}
+\newcommand{\bbX}{\mathbb{X}}
+\newcommand{\bbY}{\mathbb{Y}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% \mathscr
+\newcommand{\scrA}{\mathscr{A}}
+\newcommand{\scrB}{\mathscr{B}}
+\newcommand{\scrC}{\mathscr{C}}
+\newcommand{\scrD}{\mathscr{D}}
+\newcommand{\scrE}{\mathscr{E}}
+\newcommand{\scrF}{\mathscr{F}}
+\newcommand{\scrG}{\mathscr{G}}
+\newcommand{\scrH}{\mathscr{H}}
+\newcommand{\scrI}{\mathscr{I}}
+\newcommand{\scrJ}{\mathscr{J}}
+\newcommand{\scrK}{\mathscr{K}}
+\newcommand{\scrL}{\mathscr{L}}
+\newcommand{\scrM}{\mathscr{M}}
+\newcommand{\scrN}{\mathscr{N}}
+\newcommand{\scrO}{\mathscr{O}}
+\newcommand{\scrP}{\mathscr{P}}
+\newcommand{\scrQ}{\mathscr{Q}}
+\newcommand{\scrR}{\mathscr{R}}
+\newcommand{\scrS}{\mathscr{S}}
+\newcommand{\scrT}{\mathscr{T}}
+\newcommand{\scrU}{\mathscr{U}}
+\newcommand{\scrV}{\mathscr{V}}
+\newcommand{\scrW}{\mathscr{W}}
+\newcommand{\scrX}{\mathscr{X}}
+\newcommand{\scrY}{\mathscr{Y}}
+\newcommand{\scrZ}{\mathscr{Z}}
+
+% \mathcal
+\newcommand{\calA}{\mathcal{A}}
+\newcommand{\calB}{\mathcal{B}}
+\newcommand{\calC}{\mathcal{C}}
+\newcommand{\calD}{\mathcal{D}}
+\newcommand{\calE}{\mathcal{E}}
+\newcommand{\calF}{\mathcal{F}}
+\newcommand{\calG}{\mathcal{G}}
+\newcommand{\calH}{\mathcal{H}}
+\newcommand{\calI}{\mathcal{I}}
+\newcommand{\calJ}{\mathcal{J}}
+\newcommand{\calK}{\mathcal{K}}
+\newcommand{\calL}{\mathcal{L}}
+\newcommand{\calM}{\mathcal{M}}
+\newcommand{\calN}{\mathcal{N}}
+\newcommand{\calO}{\mathcal{O}}
+\newcommand{\calP}{\mathcal{P}}
+\newcommand{\calQ}{\mathcal{Q}}
+\newcommand{\calR}{\mathcal{R}}
+\newcommand{\calS}{\mathcal{S}}
+\newcommand{\calT}{\mathcal{T}}
+\newcommand{\calU}{\mathcal{U}}
+\newcommand{\calV}{\mathcal{V}}
+\newcommand{\calW}{\mathcal{W}}
+\newcommand{\calX}{\mathcal{X}}
+\newcommand{\calY}{\mathcal{Y}}
+\newcommand{\calZ}{\mathcal{Z}}
+
+% \vec
+\newcommand{\vva}{\vec{a}}
+\newcommand{\vvb}{\vec{b}}
+\newcommand{\vvc}{\vec{c}}
+\newcommand{\vvd}{\vec{d}}
+\newcommand{\vve}{\vec{e}}
+\newcommand{\vvf}{\vec{f}}
+\newcommand{\vvg}{\vec{g}}
+\newcommand{\vvh}{\vec{h}}
+\newcommand{\vvi}{\vec{i}}
+\newcommand{\vvj}{\vec{j}}
+\newcommand{\vvk}{\vec{k}}
+\newcommand{\vvl}{\vec{l}}
+\newcommand{\vvm}{\vec{m}}
+\newcommand{\vvn}{\vec{n}}
+\newcommand{\vvo}{\vec{o}}
+\newcommand{\vvp}{\vec{p}}
+\newcommand{\vvq}{\vec{q}}
+\newcommand{\vvr}{\vec{r}}
+\newcommand{\vvs}{\vec{s}}
+\newcommand{\vvt}{\vec{t}}
+\newcommand{\vvu}{\vec{u}}
+\newcommand{\vvv}{\vec{v}}
+\newcommand{\vvw}{\vec{w}}
+\newcommand{\vvx}{\vec{x}}
+\newcommand{\vvy}{\vec{y}}
+\newcommand{\vvz}{\vec{z}}
+\newcommand{\vvA}{\vec{A}}
+\newcommand{\vvB}{\vec{B}}
+\newcommand{\vvC}{\vec{C}}
+\newcommand{\vvD}{\vec{D}}
+\newcommand{\vvE}{\vec{E}}
+\newcommand{\vvF}{\vec{F}}
+\newcommand{\vvG}{\vec{G}}
+\newcommand{\vvH}{\vec{H}}
+\newcommand{\vvI}{\vec{I}}
+\newcommand{\vvJ}{\vec{J}}
+\newcommand{\vvK}{\vec{K}}
+\newcommand{\vvL}{\vec{L}}
+\newcommand{\vvM}{\vec{M}}
+\newcommand{\vvN}{\vec{N}}
+\newcommand{\vvO}{\vec{O}}
+\newcommand{\vvP}{\vec{P}}
+\newcommand{\vvQ}{\vec{Q}}
+\newcommand{\vvR}{\vec{R}}
+\newcommand{\vvS}{\vec{S}}
+\newcommand{\vvT}{\vec{T}}
+\newcommand{\vvU}{\vec{U}}
+\newcommand{\vvV}{\vec{V}}
+\newcommand{\vvW}{\vec{W}}
+\newcommand{\vvX}{\vec{X}}
+\newcommand{\vvY}{\vec{Y}}
+\newcommand{\vvZ}{\vec{Z}}
+
+% \mathbf
+\newcommand{\vba}{\mathbf{a}}
+\newcommand{\vbb}{\mathbf{b}}
+\newcommand{\vbc}{\mathbf{c}}
+\newcommand{\vbd}{\mathbf{d}}
+\newcommand{\vbe}{\mathbf{e}}
+\newcommand{\vbf}{\mathbf{f}}
+\newcommand{\vbg}{\mathbf{g}}
+\newcommand{\vbh}{\mathbf{h}}
+\newcommand{\vbi}{\mathbf{i}}
+\newcommand{\vbj}{\mathbf{j}}
+\newcommand{\vbk}{\mathbf{k}}
+\newcommand{\vbl}{\mathbf{l}}
+\newcommand{\vbm}{\mathbf{m}}
+\newcommand{\vbn}{\mathbf{n}}
+\newcommand{\vbo}{\mathbf{o}}
+\newcommand{\vbp}{\mathbf{p}}
+\newcommand{\vbq}{\mathbf{q}}
+\newcommand{\vbr}{\mathbf{r}}
+\newcommand{\vbs}{\mathbf{s}}
+\newcommand{\vbt}{\mathbf{t}}
+\newcommand{\vbu}{\mathbf{u}}
+\newcommand{\vbv}{\mathbf{v}}
+\newcommand{\vbw}{\mathbf{w}}
+\newcommand{\vbx}{\mathbf{x}}
+\newcommand{\vby}{\mathbf{y}}
+\newcommand{\vbz}{\mathbf{z}}
+\newcommand{\vbA}{\mathbf{A}}
+\newcommand{\vbB}{\mathbf{B}}
+\newcommand{\vbC}{\mathbf{C}}
+\newcommand{\vbD}{\mathbf{D}}
+\newcommand{\vbE}{\mathbf{E}}
+\newcommand{\vbF}{\mathbf{F}}
+\newcommand{\vbG}{\mathbf{G}}
+\newcommand{\vbH}{\mathbf{H}}
+\newcommand{\vbI}{\mathbf{I}}
+\newcommand{\vbJ}{\mathbf{J}}
+\newcommand{\vbK}{\mathbf{K}}
+\newcommand{\vbL}{\mathbf{L}}
+\newcommand{\vbM}{\mathbf{M}}
+\newcommand{\vbN}{\mathbf{N}}
+\newcommand{\vbO}{\mathbf{O}}
+\newcommand{\vbP}{\mathbf{P}}
+\newcommand{\vbQ}{\mathbf{Q}}
+\newcommand{\vbR}{\mathbf{R}}
+\newcommand{\vbS}{\mathbf{S}}
+\newcommand{\vbT}{\mathbf{T}}
+\newcommand{\vbU}{\mathbf{U}}
+\newcommand{\vbV}{\mathbf{V}}
+\newcommand{\vbW}{\mathbf{W}}
+\newcommand{\vbX}{\mathbf{X}}
+\newcommand{\vbY}{\mathbf{Y}}
+\newcommand{\vbZ}{\mathbf{Z}}
+
+% \hat
+\newcommand{\hha}{\hat{a}}
+\newcommand{\hhb}{\hat{b}}
+\newcommand{\hhc}{\hat{c}}
+\newcommand{\hhd}{\hat{d}}
+\newcommand{\hhe}{\hat{e}}
+\newcommand{\hhf}{\hat{f}}
+\newcommand{\hhg}{\hat{g}}
+\newcommand{\hhh}{\hat{h}}
+\newcommand{\hhi}{\hat{i}}
+\newcommand{\hhj}{\hat{j}}
+\newcommand{\hhk}{\hat{k}}
+\newcommand{\hhl}{\hat{l}}
+\newcommand{\hhm}{\hat{m}}
+\newcommand{\hhn}{\hat{n}}
+\newcommand{\hho}{\hat{o}}
+\newcommand{\hhp}{\hat{p}}
+\newcommand{\hhq}{\hat{q}}
+\newcommand{\hhr}{\hat{r}}
+\newcommand{\hhs}{\hat{s}}
+\newcommand{\hht}{\hat{t}}
+\newcommand{\hhu}{\hat{u}}
+\newcommand{\hhv}{\hat{v}}
+\newcommand{\hhw}{\hat{w}}
+\newcommand{\hhx}{\hat{x}}
+\newcommand{\hhy}{\hat{y}}
+\newcommand{\hhz}{\hat{z}}
+\newcommand{\hhA}{\hat{A}}
+\newcommand{\hhB}{\hat{B}}
+\newcommand{\hhC}{\hat{C}}
+\newcommand{\hhD}{\hat{D}}
+\newcommand{\hhE}{\hat{E}}
+\newcommand{\hhF}{\hat{F}}
+\newcommand{\hhG}{\hat{G}}
+\newcommand{\hhH}{\hat{H}}
+\newcommand{\hhI}{\hat{I}}
+\newcommand{\hhJ}{\hat{J}}
+\newcommand{\hhK}{\hat{K}}
+\newcommand{\hhL}{\hat{L}}
+\newcommand{\hhM}{\hat{M}}
+\newcommand{\hhN}{\hat{N}}
+\newcommand{\hhO}{\hat{O}}
+\newcommand{\hhP}{\hat{P}}
+\newcommand{\hhQ}{\hat{Q}}
+\newcommand{\hhR}{\hat{R}}
+\newcommand{\hhS}{\hat{S}}
+\newcommand{\hhT}{\hat{T}}
+\newcommand{\hhU}{\hat{U}}
+\newcommand{\hhV}{\hat{V}}
+\newcommand{\hhW}{\hat{W}}
+\newcommand{\hhX}{\hat{X}}
+\newcommand{\hhY}{\hat{Y}}
+\newcommand{\hhZ}{\hat{Z}}
+
+% algebra
+\DeclareMathOperator{\spn}{spa}
+\DeclareMathOperator{\rank}{ran}
+\DeclareMathOperator{\gker}{gke}
+\DeclareMathOperator{\proj}{pro}
+\DeclareMathOperator{\img}{im}
+
+% calculus
+\renewcommand{\d}{\;\mathrm{d}}
+\newcommand{\p}{\partial}
+\newcommand{\ddx}[1]{\f{\mathrm{d}}{\mathrm{d} #1}}
+\newcommand{\dydx}[2]{\f{\mathrm{d} #1}{\mathrm{d} #2}}
+\newcommand{\ppx}[1]{\f{\partial}{\partial #1}}
+\newcommand{\pypx}[2]{\f{\partial #1}{\partial #2}}
+\newcommand{\vol}{\mathrm{vol}}
+
+% environments
+\newcommand{\BA}[1]{\begin{align*} #1 \end{align*}}
+\newcommand{\BAC}[1]{\begin{align} #1 \end{align}}
+\newcommand{\BC}[1]{\begin{cases} #1 \end{cases}}
+\newcommand{\BE}[1]{\begin{equation*} #1 \end{equation*}}
+\newcommand{\BEC}[1]{\begin{equation} #1 \end{equation}}
+\newcommand{\BI}[1]{\begin{itemize}[nosep] #1 \end{itemize}}
+\newcommand{\BR}[1]{\begin{enumerate}[label=(\roman*)] #1 \end{enumerate}}
+\newcommand{\BMC}[1]{\begin{multline} #1 \end{multline}}
+\newcommand{\BN}[1]{\begin{enumerate}[label=(\arabic*)] #1 \end{enumerate}}
+\newcommand{\BSC}[1]{\begin{split} #1 \end{split}}
+\newcommand{\BV}[1]{\begin{enumerate}[label=(\alph*)] #1 \end{enumerate}}
+
+% groups
+\newcommand{\f}[2]{\frac{#1}{#2}}
+\newcommand{\bpa}[1]{\left( #1 \right)}
+\newcommand{\bbb}[1]{\left[ #1 \right]}
+\newcommand{\bbr}[1]{\left\{ #1 \right\}}
+\newcommand{\bab}[1]{\left\lvert #1 \right\rvert}
+\newcommand{\bfl}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\bcl}[1]{\left\lceil #1 \right\rceil}
+\newcommand{\ban}[1]{\left\langle #1 \right\rangle}
+\newcommand{\bnm}[1]{\lVert #1 \rVert}
+
+% logic
+\newcommand{\fa}{\forall}
+\newcommand{\ex}{\exists}
+\newcommand{\imp}{\Rightarrow}
+\newcommand{\bimp}{\Leftrightarrow}
+
+% matrices
+\newcommand{\MA}[1]{\begin{matrix} #1 \end{matrix}}
+\newcommand{\MP}[1]{\begin{pmatrix} #1 \end{pmatrix}}
+\newcommand{\MB}[1]{\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand{\MV}[1]{\begin{vmatrix} #1 \end{vmatrix}}
+\newcommand{\MVV}[1]{\begin{Vmatrix} #1 \end{Vmatrix}}
+
+% number theory
+\DeclareMathOperator{\lcm}{lc}
+\DeclareMathOperator{\argmin*}{argmi}
+\DeclareMathOperator{\argmax*}{argma}
+
+% probability
+\renewcommand{\P}[1]{\mathbf{P}\left\{ #1 \right\}}
+\newcommand{\E}[1]{\mathbf{E}\left[ #1 \right]}
+\newcommand{\Pc}[2]{\mathbf{P}\left\{ #1 \mid #2 \right\}}
+\newcommand{\Eb}{\newcommand{\Eb}{\mathbf{E}}}
+\newcommand{\Ec}[2]{\mathbf{E}\left[ #1 \mid #2 \right]}
+\newcommand{\Ep}[2]{\mathbf{E}_{#1}\left[ #2\right]}
+\newcommand{\Epc}[3]{\newcommand{\Epc}[3]{\mathbf{E}_{#1}\left[ #2 \mid #3 \right]}}
+\DeclareMathOperator{\Var}{Va}
+\DeclareMathOperator{\Cov}{Co}
+
+% values
+\newcommand{\eset}{\varnothing}
+\newcommand{\vZ}{\vec{0}}
