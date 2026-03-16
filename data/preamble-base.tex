@@ -53,9 +53,6 @@
 % text on page before starting a new page
 \setlength{\textheight}{21cm}
 
-% removes indentation before paragraphs
-\setlength{\parindent}{0pt}
-
 % increased context in error log
 \setcounter{errorcontextlines}{1000}
 
@@ -137,6 +134,19 @@
 \iftoggle{@@includetikz}{
   \usepackage{tikz}
   \usetikzlibrary{positioning,arrows.meta}
+}{
+
+}
+
+
+\iftoggle{@@parspace}{
+  \setlength{\parskip}{\baselineskip}
+}{
+
+}
+
+\iftoggle{@@parindent}{
+  \setlength{\parindent}{0pt}
 }{
 
 }
